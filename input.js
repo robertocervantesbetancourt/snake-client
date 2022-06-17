@@ -5,36 +5,36 @@ let connection;
 
 //handle keyboard input and control snake direction
 
-const handleUserInput = function (key){
-  if (key === '\u0003'){
+const handleUserInput = function(key) {
+  if (key === '\u0003') {
     process.exit();
-  } 
+  }
   
-  if (key === MOVE_UP_KEY){
+  if (key === MOVE_UP_KEY) {
     connection.write("Move: up");
-  } 
+  }
   
-  if (key === MOVE_LEFT_KEY){
+  if (key === MOVE_LEFT_KEY) {
     connection.write("Move: left");
-  } 
+  }
   
-  if (key === MOVE_DOWN_KEY){
+  if (key === MOVE_DOWN_KEY) {
     connection.write("Move: down");
-  } 
+  }
   
-  if (key === MOVE_RIGTH_KEY){
+  if (key === MOVE_RIGTH_KEY) {
     connection.write("Move: right");
   }
 
   //messages
-  if (key === 'z'){
-    connection.write("Say: ZZZZ!")
+  if (key === 'z') {
+    connection.write("Say: ZZZZ!");
   }
-}
+};
 
 //setup interface to handle user input from stdin
 
-const setupInput = function (conn){
+const setupInput = function(conn) {
   connection = conn;
   const stdin = process.stdin;
   stdin.setRawMode(true);
@@ -44,7 +44,7 @@ const setupInput = function (conn){
   stdin.on("data", handleUserInput);
 
   return stdin;
-}
+};
 
 module.exports = {
   handleUserInput,
